@@ -85,7 +85,7 @@ export default makeScene2D(function* (view) {
 
   tituloMision().scale(0);
 
-  yield* show(tituloMision(), 1);
+  yield* scaleShow(tituloMision(), 1);
   yield* beginSlide("first slide");
 
   yield* imagenMision().height("80%", 2);
@@ -94,7 +94,7 @@ export default makeScene2D(function* (view) {
   yield* all(vision().scale.y(1, 2), vision().width(800, 2));
 });
 
-function* show(node: Node, duration: number) {
+function* scaleShow(node: Node, duration: number) {
   yield* spring(SmoothSpring, 0, 100, duration, (value) => {
     node.scale(value / 100);
   });
