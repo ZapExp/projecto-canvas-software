@@ -1,6 +1,7 @@
 import { variants } from "@catppuccin/palette";
 import { makeScene2D } from "@motion-canvas/2d";
 import { Img, Line, Rect, Txt } from "@motion-canvas/2d/lib/components";
+import { all } from "@motion-canvas/core/lib/flow";
 import { createSignal } from "@motion-canvas/core/lib/signals";
 import {
   easeInOutCubic,
@@ -21,6 +22,7 @@ export default makeScene2D(function*(view) {
   const image = createRef<Img>();
   const imagePos = Vector2.createSignal([400, 50]);
   const line = createRef<Line>();
+  const lineText = createRef<Txt>();
 
   view.add(
     <>
@@ -30,6 +32,7 @@ export default makeScene2D(function*(view) {
         lineWidth={10}
         height={120}
         width={400}
+        layout
         alignItems={"center"}
         justifyContent={"center"}
         radius={20}
@@ -57,6 +60,13 @@ export default makeScene2D(function*(view) {
         endOffset={450}
         points={() => [titlePos(), [titlePos().x, imagePos().y], imagePos()]}
       ></Line>
+      <Txt
+        ref={lineText}
+        position={() => [titlePos().x + 250, imagePos().y - 50]}
+        fill={color.yellow.hex}
+      >
+        Se trata de
+      </Txt>
     </>
   );
 
@@ -64,6 +74,8 @@ export default makeScene2D(function*(view) {
   title().scale(0);
   image().scale(0);
   line().end(0);
+  lineText().opacity(0)
+  lineText().position.y(lineText().position.y() + 50);
 
   //animations
   yield* scaleShow(title(), 2);
@@ -71,6 +83,10 @@ export default makeScene2D(function*(view) {
   yield* beginSlide("mostrar imagen");
   yield* arcMove(titlePos, [-600, -350], 1);
   yield* line().end(1, 2, easeInOutSine);
+  yield* all(
+    lineText().position.y(lineText().position.y() - 50, 1),
+    lineText().opacity(1, 1)
+  );
   yield* scaleShow(image(), 1);
 
   yield* beginSlide("siguiente diapositiva");
