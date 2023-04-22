@@ -12,9 +12,9 @@ import {
   Vector2Signal,
 } from "@motion-canvas/core/lib/types";
 
-export function* scaleShow(node: Node, duration: number) {
+export function* scaleShow(node: Node, duration: number, finalScale = 1) {
   yield* spring(SmoothSpring, 0, 100, duration, (value) => {
-    node.scale(value / 100);
+    node.scale((value * finalScale) / 100);
   });
 }
 
