@@ -67,8 +67,8 @@ Valeria Miramag
 
   yield* beginSlide("Empezar presentación")
   //show title
-  yield* title().text(" Sistema de gestión de conciertos", 2);
-  yield* takiy().text("TAKIY", 2);
+  yield* title().text(" Sistema de gestión de conciertos", 2, linear);
+  yield* takiy().text("TAKIY", 2, linear);
 
   //move title
   yield* all(
