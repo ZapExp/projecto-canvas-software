@@ -2,7 +2,8 @@ import { variants } from "@catppuccin/palette";
 import { makeScene2D } from "@motion-canvas/2d";
 import { Img, Txt } from "@motion-canvas/2d/lib/components";
 import { all, sequence, waitFor } from "@motion-canvas/core/lib/flow";
-import { easeOutExpo } from "@motion-canvas/core/lib/tweening";
+import { fadeTransition } from "@motion-canvas/core/lib/transitions";
+import { easeOutExpo, linear } from "@motion-canvas/core/lib/tweening";
 import { beginSlide, createRef } from "@motion-canvas/core/lib/utils";
 import { scaleShow, arcMove } from "../lib/transitions";
 
@@ -37,8 +38,11 @@ export default makeScene2D(function* (view) {
   //prepare things for animation
   gracias().text("");
 
+  //transitions
+  yield* fadeTransition()
+
   //show title
-  yield* gracias().text("Muchas Gracias por su atención", 2);
+  yield* gracias().text("Muchas Gracias por su atención", 2, linear);
 
   //move title
   yield* sequence(
