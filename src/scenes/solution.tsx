@@ -115,8 +115,8 @@ export default makeScene2D(function* (view) {
   };
 
   //transitions
-  // yield* zoomInTransition(new BBox(20, 320, 50, 50), 1);
-  yield slideTransition(Direction.Top)
+  yield* zoomInTransition(new BBox(20, 320, 50, 50), 1); 
+  // yield slideTransition(Direction.Top)
   yield* waitFor(1)
   // yield* angle(45, 3);
   yield* changeImageWojack("../../images/solution_1.jpeg", 1, 2);
@@ -127,7 +127,7 @@ export default makeScene2D(function* (view) {
   yield* beginSlide("imagen 3");
   yield* changeImage("../../images/solution_4.png", 1, 2);
   yield* beginSlide("imagen 4");
-  yield* changeImage("../../images/solution_5.jpeg", 0.5, 2);
+  yield* changeImage("../../images/solution_5.jpeg", 0.9, 2);
   yield* beginSlide("imagen 5");
   yield* changeImage("../../images/solution_6.jpg", 1, 2);
   yield* beginSlide("imagen 6");

@@ -31,7 +31,7 @@ export default makeScene2D(function* (view) {
     yield* ref().position(position, 1);
   };
 
-  yield* slideTransition(Direction.Top)
+  yield* slideTransition(Direction.Right)
 
   yield* view.fill(color.text.hex, 1)
 
