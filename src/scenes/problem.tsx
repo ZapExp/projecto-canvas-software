@@ -3,8 +3,9 @@ import { Img, Txt, Node, Line } from "@motion-canvas/2d/lib/components";
 import { makeScene2D } from "@motion-canvas/2d/lib/scenes/makeScene2D";
 import { all, sequence, waitFor } from "@motion-canvas/core/lib/flow";
 import { createSignal, DEFAULT } from "@motion-canvas/core/lib/signals";
+import { slideTransition, zoomOutTransition } from "@motion-canvas/core/lib/transitions";
 import { easeInOutSine, linear } from "@motion-canvas/core/lib/tweening";
-import { Vector2 } from "@motion-canvas/core/lib/types";
+import { Direction, Vector2 } from "@motion-canvas/core/lib/types";
 import {
   beginSlide,
   createRef,
@@ -131,6 +132,9 @@ export default makeScene2D(function* (view) {
   lineSC().end(0);
   scammer().scale(0);
   text().scale(0);
+
+  //transition
+  yield* slideTransition(Direction.Bottom)
   //animation
 
   //man appears
