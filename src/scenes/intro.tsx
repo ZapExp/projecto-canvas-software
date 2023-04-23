@@ -64,6 +64,8 @@ Valeria Miramag
   takiy().text("");
   integrantes().text("")
 
+
+  yield* beginSlide("Empezar presentación")
   //show title
   yield* title().text(" Sistema de gestión de conciertos", 2);
   yield* takiy().text("TAKIY", 2);
