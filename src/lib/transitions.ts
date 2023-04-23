@@ -18,8 +18,8 @@ export function* scaleShow(node: Node, duration: number, finalScale = 1) {
   });
 }
 
-export function* arcMove(
-  vectorSignal: Vector2Signal<void>,
+export function* arcMove<T>(
+  vectorSignal: Vector2Signal<T>,
   to: PossibleVector2,
   duration: number,
   timingFunc: TimingFunction = easeInOutCubic
