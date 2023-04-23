@@ -12,7 +12,7 @@ import {
   range,
   useRandom,
 } from "@motion-canvas/core/lib/utils";
-import { scaleShow } from "../lib/transitions";
+import { arcMove, scaleShow } from "../lib/transitions";
 
 const color = variants.frappe;
 const random = useRandom(9319);
@@ -114,7 +114,7 @@ export default makeScene2D(function* (view) {
         ref={text}
         fontSize={300}
         fill={color.red.hex}
-        stroke={color.base.hex }
+        stroke={color.base.hex}
         lineWidth={10}
         y={-200}
       >
@@ -143,7 +143,7 @@ export default makeScene2D(function* (view) {
   yield* beginSlide("mostrar vendedor");
   yield* sequence(
     0.2,
-    all(catPos([-600, -200], 1), cat().scale(1, 1)),
+    all(arcMove(catPos, [-600, -200], 1), cat().scale(1, 1)),
     manPos([0, 1080 / 2], 1)
   );
   //show line and scammer
