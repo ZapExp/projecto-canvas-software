@@ -54,13 +54,11 @@ export default makeScene2D(function* (view) {
             ></Img>
           </Node>
         </Node>
-        <Rect
-          stroke={color.overlay1.hex}
+        <Img
+          src={"../../images/fondo_cinta.png"}
           opacity={0.7}
-          lineWidth={450}
           size={[1920, 1080]}
-          radius={400}
-        ></Rect>
+        ></Img>
       </Node>
     </>
   );
@@ -86,7 +84,7 @@ export default makeScene2D(function* (view) {
   };
 
   //transitions
-yield* zoomInTransition(new BBox(20, 320, 50, 50))
+yield* zoomInTransition(new BBox(20, 320, 50, 50), 1)
   // yield* angle(45, 3);
   yield* changeImage("../../images/solution_1.jpeg", 1, 2);
   yield* beginSlide("imagen 2");
@@ -100,5 +98,6 @@ yield* zoomInTransition(new BBox(20, 320, 50, 50))
   yield* beginSlide("imagen 6");
   yield* changeImage("../../images/solution_6.jpeg", 2.8, 2);
 
+  yield* beginSlide("siguiente diapositiva");
   waitFor(1);
 });
