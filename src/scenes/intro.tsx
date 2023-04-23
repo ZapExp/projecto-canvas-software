@@ -67,7 +67,7 @@ Valeria Miramag
 
   yield* beginSlide("Empezar presentación")
   //show title
-  yield* title().text(" Sistema de gestión de conciertos", 2, linear);
+  yield* title().text("Plataforma web de venta de boletos", 2, linear);
   yield* takiy().text("TAKIY", 2, linear);
 
   //move title
@@ -82,7 +82,7 @@ David Viveros
 Gabriel Tovar
 Eliana Zambrano 
 Valeria Miramag
-`, 6, linear)
+`, 4, linear)
 
   yield* beginSlide("proxima diapositiva")
 });

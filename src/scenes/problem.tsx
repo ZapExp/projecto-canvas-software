@@ -29,7 +29,7 @@ export default makeScene2D(function* (view) {
   ];
 
   const manPos = Vector2.createSignal([0, 1080 / 2]);
-  const scammerPos = Vector2.createSignal([600, -200]);
+  const scammerPos = Vector2.createSignal([400, -200]);
   const catPos = Vector2.createSignal([-600, -200]);
 
   const man = createRef<Img>();
@@ -59,14 +59,14 @@ export default makeScene2D(function* (view) {
         ))}
       </Node>
       <Img
-        src={"../../images/person_overwhelmed.png"}
+        src={"../../images/happy_man.png"}
         ref={man}
         position={manPos}
         offsetY={1}
-        scale={0.8}
+        scale={0.7}
       ></Img>
       <Img
-        src={"../../images/hombre_agarrando_dinero.jpg"}
+        src={"../../images/fila_concierto.jpg"}
         ref={scammer}
         position={scammerPos}
         scale={0.6}
@@ -107,7 +107,7 @@ export default makeScene2D(function* (view) {
         lineWidth={10}
         endArrow
         stroke={color.pink.hex}
-        startOffset={250}
+        startOffset={500}
         endOffset={300}
         points={() => [scammerPos(), catPos()]}
       ></Line>{" "}
@@ -150,6 +150,12 @@ export default makeScene2D(function* (view) {
     all(arcMove(catPos, [-600, -200], 1), cat().scale(1, 1)),
     manPos([0, 1080 / 2], 1)
   );
+  
+  //show change in man
+  yield* man().scale(0, 0.2)
+  man().src("../../images/person_overwhelmed.png")
+  yield* scaleShow(man(), 1, 0.8)
+
   //show line and scammer
   yield* lineMS().end(1, 1, easeInOutSine);
   yield* scaleShow(scammer(), 1, 0.6);
@@ -172,6 +178,7 @@ export default makeScene2D(function* (view) {
   );
 
   yield* beginSlide("siguiente diapositiva");
+  yield* waitFor(0.5)
 });
 
 function* moveRandom(node: Node, duration: number) {

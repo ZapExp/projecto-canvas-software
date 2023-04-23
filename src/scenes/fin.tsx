@@ -39,7 +39,7 @@ export default makeScene2D(function* (view) {
   gracias().text("");
 
   //transitions
-  yield* fadeTransition()
+  yield* fadeTransition(1)
 
   //show title
   yield* gracias().text("Muchas Gracias por su atención", 2, linear);
