@@ -2,6 +2,7 @@ import { variants } from "@catppuccin/palette";
 import { makeScene2D } from "@motion-canvas/2d";
 import { Img, Txt } from "@motion-canvas/2d/lib/components";
 import { all, sequence, waitFor } from "@motion-canvas/core/lib/flow";
+import { easeInOutSine, linear } from "@motion-canvas/core/lib/tweening";
 import { beginSlide, createRef } from "@motion-canvas/core/lib/utils";
 import { scaleShow, arcMove } from "../lib/transitions";
 
@@ -79,7 +80,7 @@ David Viveros
 Gabriel Tovar
 Eliana Zambrano 
 Valeria Miramag
-`, 7)
+`, 6, linear)
 
   yield* beginSlide("proxima diapositiva")
 });
