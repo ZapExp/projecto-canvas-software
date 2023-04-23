@@ -2,8 +2,9 @@ import { variants } from "@catppuccin/palette";
 import { makeScene2D } from "@motion-canvas/2d";
 import { Img, Line, Rect, Txt } from "@motion-canvas/2d/lib/components";
 import { all } from "@motion-canvas/core/lib/flow";
+import { slideTransition } from "@motion-canvas/core/lib/transitions";
 import { easeInOutSine } from "@motion-canvas/core/lib/tweening";
-import { Vector2 } from "@motion-canvas/core/lib/types";
+import { Direction, Vector2 } from "@motion-canvas/core/lib/types";
 import { beginSlide, createRef } from "@motion-canvas/core/lib/utils";
 import { arcMove, scaleShow } from "../lib/transitions";
 
@@ -73,6 +74,8 @@ export default makeScene2D(function*(view) {
   lineText().opacity(0);
   lineText().position.y(lineText().position.y() + 50);
 
+  //transitions
+  yield* slideTransition(Direction.Top);
   //animations
   yield* scaleShow(title(), 2);
 
